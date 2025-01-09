@@ -42,36 +42,15 @@ int check_dable(char **input)
 int check_error(char **numbers)
 {
     if (!numbers)
-        return 1;
+        exit (1);
 
-    if (check_nambre(numbers))
+    if (check_nambre(numbers) ||check_dable(numbers) ||check_max(numbers))
     {
-        write(2, "Error1\n", 6);
-        return 1;
+        write(2, "Error\n", 6);
+        exit(1);
     }
-    if (check_dable(numbers))
-    {
-        write(2, "ERROR2\n", 6);
-        return 1;
-    }
-  
-    return 0;
+    exit (0);
 }
-int check_max(char **input)
-{
-    int i ;
-    long num;
-
-    i = 0;
-    while (input[i])  
-    {
-        num = ft_atoi(input[i]);
-        if (num > INT_MAX || num < INT_MIN)
-                return 1; 
-        i++;
-    }
-    return 0;
-    }
 
 int check_input(int ac, char **av)
 {
@@ -105,3 +84,29 @@ int check_input(int ac, char **av)
 	result = check_error(number);
     return result;
 }
+
+int check_max(char **input)
+{
+    int i ;
+    long num;
+
+    i = 0;
+    while (input[i])  
+    {
+        num = ft_atoi(input[i]);
+        if (num > INT_MAX || num < INT_MIN)
+                return (1); 
+        i++;
+    }
+    return (0);
+}
+/*
+int check_espace(char **input)
+{
+    while(input[i] == ' ')
+    {
+        if(input[i +1] == ' ')
+            return 1;
+    }
+    return 0;
+}*/
