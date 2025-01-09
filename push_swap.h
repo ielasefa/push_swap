@@ -16,5 +16,6 @@ char *ft_strjoin(char *s1, char *s2);
 char **ft_split(char const *s, char c);
 int check_max(char **input);
 long	ft_atoi(const char *str);
+int check_espace(char **input);
 
 #endif

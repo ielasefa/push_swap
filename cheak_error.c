@@ -44,7 +44,8 @@ int check_error(char **numbers)
     if (!numbers)
         exit (1);
 
-    if (check_nambre(numbers) ||check_dable(numbers) ||check_max(numbers))
+    if (check_nambre(numbers) ||check_dable(numbers) 
+            ||check_max(numbers) || check_espace(numbers))
     {
         write(2, "Error\n", 6);
         exit(1);
@@ -100,13 +101,22 @@ int check_max(char **input)
     }
     return (0);
 }
-/*
 int check_espace(char **input)
 {
-    while(input[i] == ' ')
+    int i;
+    int j;
+
+    i = 0;
+  while (input[i])
     {
-        if(input[i +1] == ' ')
-            return 1;
+        j = 0;
+        while (input[i][j])
+        {
+            if (input[i][j] != ' ')
+                return 0;
+            j++;
+        }
+        i++;
     }
-    return 0;
-}*/
+    return 1;
+}
