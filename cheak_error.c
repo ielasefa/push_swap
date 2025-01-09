@@ -1,52 +1,107 @@
-//#include "push_swap"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-//void ft_tcheak_input
+#include "push_swap.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+int check_nambre(char **input)
 {
-	char	*dst;
-
-	int i, (j);
-	if (!s1)
-		return (strdup(s2));
-	if (!s2)
-		return (strdup(s1));
-	if (!s1 && !s2)
-		return (NULL);
-	dst = malloc(((strlen(s1) + strlen(s2)) + 2));
-	if (!dst)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	j = 0;
-    dst[i++] = ' ';
-	while (s2[j])
-
-		dst[i++] = s2[j++];
-    dst[i] = ' ';
-	dst[i +1] = '\0';
-	return (dst);
-}
-int main( int ac , char **av)
-{
-    char  *input;
-    int i = 1;
-
-    if(ac == 1)
-        return (0);
-    while ( i < ac)
+    if (!input)
+        return 1;
+    int i = 0;
+    while (input[i])
     {
-        char* tmp = ft_strjoin( input ,av[i]);
+        int j = 0;
+        while (input[i][j])
+        {
+            if (!ft_isdigit(input[i][j]) && 
+                !(j == 0 && (input[i][j] == '-' || input[i][j] == '+')))
+                return 1;
+            j++;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int check_dable(char **input)
+{
+    if (!input)
+        return 1;
+    int i = 0;
+    while (input[i])
+    {
+        int k = i + 1;
+        while (input[k])
+        {
+            if(atoi(input[i]) == atoi(input[k]))
+                return 1;
+            k++;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int check_error(char **numbers)
+{
+    if (!numbers)
+        return 1;
+
+    if (check_nambre(numbers))
+    {
+        write(2, "Error1\n", 6);
+        return 1;
+    }
+    if (check_dable(numbers))
+    {
+        write(2, "ERROR2\n", 6);
+        return 1;
+    }
+  
+    return 0;
+}
+int check_max(char **input)
+{
+    int i ;
+    long num;
+
+    i = 0;
+    while (input[i])  
+    {
+        num = ft_atoi(input[i]);
+        if (num > INT_MAX || num < INT_MIN)
+                return 1; 
+        i++;
+    }
+    return 0;
+    }
+
+int check_input(int ac, char **av)
+{
+	int result;
+    char *input;
+    char **number;
+    
+    input = strdup(av[1]);
+    if (!input)
+        return 1;
+
+    int i = 2;
+    while (i < ac)
+    {
+        char *tmp = ft_strjoin(input, av[i]);
+        if (!tmp)
+        {
+            free(input);
+            return 1;
+        }
+        free(input);
         input = tmp;
         i++;
     }
-     ft_split(input, ' ');
-    
-    //ft_tcheak_error(input ,)   
+    number = ft_split(input, ' ');
+    if (!number)
+    {
+        free(input);
+        return 1;
+    }
+	result = check_error(number);
+    return result;
 }
