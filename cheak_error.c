@@ -66,7 +66,7 @@ int check_input(int ac, char **av)
     int i = 2;
     while (i < ac)
     {
-        char *tmp = ft_strjoin(input, av[i]);
+        char *tmp = ft_strjoin(input, av[i]);   
         if (!tmp)
         {
             free(input);
