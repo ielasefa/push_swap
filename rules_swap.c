@@ -59,7 +59,7 @@ void pb(t_stack **stack_a, t_stack **stack_b)
 
     if (!(*stack_a))
         return;
-
+        
     first = *stack_a;
     *stack_a = first->next;
     first->next = *stack_b;

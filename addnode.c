@@ -50,10 +50,3 @@ int size_node(t_stack *stack)
     }
     return count;
 }
-
-t_stack *first_node(t_stack *stack)  
-{
-    if (!stack)
-        return NULL;
-    return stack;  
-}

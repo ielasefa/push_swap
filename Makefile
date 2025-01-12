@@ -1,5 +1,7 @@
 NAME = push_swap
-SRC = cheak_error.c  main.c  utul_push_swap.c
+SRC = addnode.c  cheak_error.c  main.c  reverse_rotate.c  rotate.c  rules_swap.c  utul_push_swap.c
+
+			 
 CC = cc
 FLAG = -Wall-Wextra-Werror
 RM = rm -f
