@@ -26,7 +26,8 @@ int     check_espace(char **input);
 
 t_stack *last_node(t_stack *stack);
 void    add_back(t_stack **lst , t_stack *new);
-t_stack *add_node(int value);  
+t_stack *add_node(int value); 
+int size_node(t_stack *stack); 
 
 void    sa(t_stack **stack_a);
 void    sb(t_stack **stack_b);

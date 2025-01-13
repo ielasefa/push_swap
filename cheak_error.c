@@ -56,6 +56,7 @@ int check_error(char **numbers)
 int check_input(int ac, char **av)
 {
 	int result;
+    int i;
     char *input;
     char **number;
     
@@ -63,7 +64,7 @@ int check_input(int ac, char **av)
     if (!input)
         return 1;
 
-    int i = 2;
+    i = 2;
     while (i < ac)
     {
         char *tmp = ft_strjoin(input, av[i]);   
@@ -101,6 +102,7 @@ int check_max(char **input)
     }
     return (0);
 }
+
 int check_espace(char **input)
 {
     int i;
