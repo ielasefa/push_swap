@@ -43,14 +43,14 @@ int check_error(char **numbers)
 {
     if (!numbers)
         exit (1);
-
+        
     if (check_nambre(numbers) ||check_dable(numbers) 
             ||check_max(numbers) || check_espace(numbers))
     {
         write(2, "Error\n", 6);
         exit(1);
     }
-    exit (0);
+    return (0);
 }
 
 int check_input(int ac, char **av)

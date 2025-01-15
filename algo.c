@@ -1,72 +1,160 @@
 #include "push_swap.h"
 
-int	array_sorted(t_stack **stack_a)
+int	*array_sorted(t_stack **stack_a)
 {
 	int		size;
 	int		i;
 	int		j;
-	t_stack	*temp;
-	int		dst;
-	int 	tmp;
+	t_stack	*curr;
+	int		*arr;
+	int tmp;
 
+	if(!(*stack_a))
+		return NULL;
 	size = 0;
-	i = 0;
-	temp = *stack_a;
-	while (temp)
-	{
-		size++;
-		temp = temp->next;
-	}
-	dst = (int *)malloc(sizeof(int) * (size + 1));
-	if (!dst)
+	size = size_node(*stack_a);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
 		return (NULL);
-	temp = *stack_a;
-	while (temp)
-	{
-		dst[i++] = temp->content;
-		temp = temp->next;
-	}
-	dst[size] = '\0';
+	
 	i = 0;
-	while (i < size - 1)
+	curr = *stack_a;
+	while (curr)
 	{
-		j = 0;
-		while (j < size - i - 1)
+		arr[i] = curr->value;
+		curr = curr->next;
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
 		{
-			if (dst[j] > dst[j + 1])
+			if (arr[i] > arr[j])
 			{
-				tmp = dst[j];
-				dst[j] = dst[j + 1];
-				dst[j + 1] = tmp;
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
 			}
 			j++;
 		}
 		i++;
-	}
-	return (dst);
+	}	
+	return (arr);
+}
+void print_stack(t_stack *stack_b)
+ {
+	while (stack_b)
+	{
+        printf("%d ->", stack_b->value);
+        stack_b = stack_b->next;
+    }
+	printf("NULL\n");
 }
 
-void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,char *arr )
+int max_value(t_stack *stack_b)
+{
+	int i;
+	int MAX;
+	int indix;
+
+	MAX = stack_b->value;
+	i = 0;
+	indix = 0;
+
+	while(stack_b)
+	{
+		if(MAX < stack_b->value)
+		{
+			MAX = stack_b->value;
+			indix = i;
+		}
+		i++;
+		stack_b = stack_b->next;
+		
+	}
+	return indix;
+}
+void revirse_stack_a(t_stack **stack_a ,t_stack **stack_b)
+{
+	int	size;
+	int max;
+
+	while(*stack_b)
+	{
+		max = max_value(*stack_b);
+		size = size_node(*stack_b);
+		if(max <= size / 2)
+		{
+			while(max > 0)
+			{
+				rb(stack_b);
+				max--;
+			}
+		}
+		else
+		{
+			while(max < size)
+			{
+				rrb(stack_b);
+				max++;
+			}
+		}	
+		pa(stack_a ,stack_b);
+	}
+
+}
+
+int	ft_is_small(t_stack *stack_a, int *arr, int index)
+{
+	int	i;
+
+	i = 0;
+	while (i <= index)
+	{
+		if (stack_a->value <= arr[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size)
 {
 	int start;
 	int end;
 
 	start = 0;
-	end = start + 1;
-	
+	end = size / 6;
+
+	if (size > 100)
+		end = size / 16;
 	while(*stack_a)
-	{
-		if(arr[start] == *stack_a)
+	{ 
+		if(ft_is_small(*stack_a ,arr ,start))
 		{
-			pa(*stack_a);
+			pb(stack_a ,stack_b);	
+			rb(stack_b);
+			if (end  < size -1)
+				end++;
+			if (start < end)
+				start++;
 		}
-		else if(arr[end] == *stack_a)
+		else if(ft_is_small(*stack_a ,arr, end))
 		{
-			pa(*stack_a);
-			rb(*stack_b);
+			pb(stack_a ,stack_b);
+		if (*stack_b && (*stack_b)->next
+				&& (*stack_b)->value < (*stack_b)->next->value)
+				sb(stack_b);
+			if (end  < size -1)
+				end++;
+			if (start < end)
+				start++;
 		}
 		else
-			ra(*stack_a);
-	}
+			ra(stack_a);
+	} 
+ 	revirse_stack_a(stack_a ,stack_b);
 }
 

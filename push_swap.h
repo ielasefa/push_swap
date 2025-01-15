@@ -27,6 +27,7 @@ int     check_espace(char **input);
 t_stack *last_node(t_stack *stack);
 void    add_back(t_stack **lst , t_stack *new);
 t_stack *add_node(int value); 
+t_stack *add_stack(int ac, char **av);
 int size_node(t_stack *stack); 
 
 void    sa(t_stack **stack_a);
@@ -42,5 +43,17 @@ void    rb(t_stack **stack_b);
 
 void    pa(t_stack **stack_a, t_stack **stack_b);
 void    pb(t_stack **stack_a, t_stack **stack_b);
+
+void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size);
+int	ft_is_small(t_stack *stack_a, int *arr, int index);
+void revirse_stack_a(t_stack **stack_a ,t_stack **stack_b);
+int max_value(t_stack *stack_b);
+int	*array_sorted(t_stack **stack_a);
+
+////////////
+
+void print_stack(t_stack *stack);
+
+
 
 #endif
