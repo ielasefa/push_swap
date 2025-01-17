@@ -24,11 +24,10 @@ void rb(t_stack **stack_b)
 
     if (!(*stack_b) || !(*stack_b)->next)
         return;
-
     first = *stack_b;
     *stack_b = (*stack_b)->next;
     last = last_node(*stack_b);
-
+    
     last->next = first;
     first->next = NULL;
     write(1 , "rb\n", 3);

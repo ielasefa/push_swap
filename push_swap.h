@@ -45,12 +45,18 @@ void    pa(t_stack **stack_a, t_stack **stack_b);
 void    pb(t_stack **stack_a, t_stack **stack_b);
 
 void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size);
-int	ft_is_small(t_stack *stack_a, int *arr, int index);
+int small(t_stack *stack_a, int *arr, int index);
 void revirse_stack_a(t_stack **stack_a ,t_stack **stack_b);
 int max_value(t_stack *stack_b);
 int	*array_sorted(t_stack **stack_a);
 
-////////////
+void sort(t_stack **stack_a ,t_stack **stack_b , int arr ,int size);
+void sort_2_number(t_stack **stack_a);
+void sort_3_number(t_stack **stack_a);
+void sort_4_number(t_stack **stack_a ,t_stack **stack_b);
+void sort_5_number(t_stack **stack_a ,t_stack **stack_b);
+void ft_sort_min(t_stack **stack_a ,t_stack **stack_b);
+
 
 void print_stack(t_stack *stack);
 

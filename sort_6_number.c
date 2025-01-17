@@ -56,18 +56,18 @@ void print_stack(t_stack *stack_b)
 int max_value(t_stack *stack_b)
 {
 	int i;
-	int MAX;
+	int max;
 	int indix;
 
-	MAX = stack_b->value;
+	max = stack_b->value;
 	i = 0;
 	indix = 0;
 
 	while(stack_b)
 	{
-		if(MAX < stack_b->value)
+		if(max < stack_b->value)
 		{
-			MAX = stack_b->value;
+			max = stack_b->value;
 			indix = i;
 		}
 		i++;
@@ -106,7 +106,7 @@ void revirse_stack_a(t_stack **stack_a ,t_stack **stack_b)
 
 }
 
-int	ft_is_small(t_stack *stack_a, int *arr, int index)
+int	small(t_stack *stack_a, int *arr, int index)
 {
 	int	i;
 
@@ -132,7 +132,7 @@ void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size)
 		end = size / 16;
 	while(*stack_a)
 	{ 
-		if(ft_is_small(*stack_a ,arr ,start))
+		if(small(*stack_a ,arr ,start))
 		{
 			pb(stack_a ,stack_b);	
 			rb(stack_b);
@@ -141,7 +141,7 @@ void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size)
 			if (start < end)
 				start++;
 		}
-		else if(ft_is_small(*stack_a ,arr, end))
+		else if(small(*stack_a ,arr, end))
 		{
 			pb(stack_a ,stack_b);
 		if (*stack_b && (*stack_b)->next

@@ -50,3 +50,23 @@ int size_node(t_stack *stack)
     }
     return count;
 }
+
+int check_espace(char **input)
+{
+    int i;
+    int j;
+
+    i = 0;
+  while (input[i])
+    {
+        j = 0;
+        while (input[i][j])
+        {
+            if (input[i][j] != ' ')
+                return 0;
+            j++;
+        }
+        i++;
+    }
+    return 1;
+}
