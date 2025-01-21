@@ -19,19 +19,6 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-void free_split(char **split)
-{
-    int i = 0;
-
-    if (!split)
-        return;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
-}
 
 t_stack *add_stack(int ac, char **av)
 {
@@ -66,17 +53,7 @@ t_stack *add_stack(int ac, char **av)
 }
 
 
-void free_stack(t_stack *stack)
-{
-    t_stack *tmp;
 
-    while (stack)
-    {
-        tmp = stack->next;  
-        free(stack);        
-        stack = tmp;        
-    }
-}
 
 int	main(int ac, char **av)
 {

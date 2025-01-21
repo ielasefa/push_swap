@@ -72,11 +72,9 @@ int	check_error(char **numbers)
 
 int	check_input(int ac, char **av)
 {
-	int		result;
-	int		i;
-	char	*input;
-	char	**number;
-	char	*tmp;
+	int result, (i);
+
+	char *input, (**number), (*tmp);
 
 	input = strdup(av[1]);
 	if (!input)
@@ -86,10 +84,7 @@ int	check_input(int ac, char **av)
 	{
 		tmp = ft_strjoin(input, av[i]);
 		if (!tmp)
-		{
-			free(input);
-			return (1);
-		}
+			free_input(input);
 		free(input);
 		input = tmp;
 		i++;

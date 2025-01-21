@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-int	*array_sorted(int *arr, int size);
 int	*array_creat(t_stack **stack_a)
 {
 	t_stack	*curr;

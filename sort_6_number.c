@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:23:52 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 17:21:33 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:19:39 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,26 @@ int	max_value(t_stack *stack_b)
 void	revirse_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
-	int	max;
+	int	max_indix;
 
 	while (*stack_b)
 	{
-		max = max_value(*stack_b);
+		max_indix = max_value(*stack_b);
 		size = size_node(*stack_b);
-		if (max <= size / 2)
+		if (max_indix <= size / 2)
 		{
-			while (max > 0)
+			while (max_indix > 0)
 			{
 				rb(stack_b);
-				max--;
+				max_indix--;
 			}
 		}
-		else if (max <= size)
+		else if (max_indix <= size)
 		{
-			while (max < size)
+			while (max_indix < size)
 			{
 				rrb(stack_b);
-				max++;
+				max_indix++;
 			}
 		}
 		pa(stack_a, stack_b);
@@ -81,9 +81,11 @@ void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 {
 	int start, (end);
 	start = 0;
-	end = size /6;
+	end = size / 8;
 	if (size > 100)
-		end = size / 10;
+	{
+		end = size / 4;
+	}
 	while (*stack_a)
 	{
 		if (small(*stack_a, arr, start))
@@ -105,6 +107,7 @@ void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 	}
 	revirse_stack_a(stack_a, stack_b);
 }
+
 
 void	increment(int *start, int *end, int *size)
 {
