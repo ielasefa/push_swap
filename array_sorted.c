@@ -45,9 +45,9 @@ int	*array_sorted(int *arr, int size)
 	int	tmp;
 
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		j = 0;
+		j = i + 1;
 		while (j < size)
 		{
 			if (arr[i] > arr[j])

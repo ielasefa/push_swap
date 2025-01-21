@@ -71,14 +71,13 @@ int	main(int ac, char **av)
 	stack_a = add_stack(ac, av);
 	size = size_node(stack_a);
 	arr = array_creat(&stack_a);
-	sort(&stack_a, &stack_b, *arr, size);
-    while (stack_a)
+	sort(&stack_a, &stack_b, arr, size);
+   /* while (stack_a)
     {
         tmp = stack_a->next;  
         free(stack_a);        
         stack_a = tmp;        
-    }
-
+    }*/
 	free(arr);
 	return (0);
 }

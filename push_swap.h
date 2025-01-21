@@ -63,9 +63,9 @@ void				revirse_stack_a(t_stack **stack_a, t_stack **stack_b);
 int					max_value(t_stack *stack_b);
 int					*array_creat(t_stack **stack_a);
 int					*array_sorted(int *arr, int size);
-void				increment(int *start, int *end, int *size);
+void				increment(int *start, int *end, int size);
 void 				free_split(char **split);
-void				sort(t_stack **stack_a, t_stack **stack_b, int arr,
+void				sort(t_stack **stack_a, t_stack **stack_b, int *arr,
 						int size);
 void				sort_2_number(t_stack **stack_a);
 void				sort_3_number(t_stack **stack_a);
