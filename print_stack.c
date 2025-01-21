@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:22:50 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 16:22:51 by iel-asef         ###   ########.fr       */
+/*   Created: 2025/01/20 17:20:49 by iel-asef          #+#    #+#             */
+/*   Updated: 2025/01/20 17:21:16 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void	print_stack(t_stack *stack_b)
 {
-	t_stack	*second;
-
-	if (!(*stack_b))
-		return ;
-	second = *stack_b;
-	*stack_b = second->next;
-	second->next = *stack_a;
-	*stack_a = second;
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*first;
-
-	if (!(*stack_a))
-		return ;
-	first = *stack_a;
-	*stack_a = first->next;
-	first->next = *stack_b;
-	*stack_b = first;
-	write(1, "pb\n", 3);
+	while (stack_b)
+	{
+		printf("%d ->", stack_b->value);
+		stack_b = stack_b->next;
+	}
+	printf("NULL\n");
 }

@@ -1,109 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_6_number.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/20 16:23:52 by iel-asef          #+#    #+#             */
+/*   Updated: 2025/01/20 17:21:33 by iel-asef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	*array_sorted(t_stack **stack_a)
+int	max_value(t_stack *stack_b)
 {
-	int		size;
-	int		i;
-	int		j;
-	t_stack	*curr;
-	int		*arr;
-	int tmp;
-
-	if(!(*stack_a))
-		return NULL;
-	size = 0;
-	size = size_node(*stack_a);
-	arr = malloc(sizeof(int) * size);
-	if (!arr)
-		return (NULL);
-	
-	i = 0;
-	curr = *stack_a;
-	while (curr)
-	{
-		arr[i] = curr->value;
-		curr = curr->next;
-		i++;
-	}
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] > arr[j])
-			{
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}	
-	return (arr);
-}
-void print_stack(t_stack *stack_b)
- {
-	while (stack_b)
-	{
-        printf("%d ->", stack_b->value);
-        stack_b = stack_b->next;
-    }
-	printf("NULL\n");
-}
-
-int max_value(t_stack *stack_b)
-{
-	int i;
-	int max;
-	int indix;
+	int	i;
+	int	max;
+	int	indix;
 
 	max = stack_b->value;
 	i = 0;
 	indix = 0;
-
-	while(stack_b)
+	while (stack_b)
 	{
-		if(max < stack_b->value)
+		if (max < stack_b->value)
 		{
 			max = stack_b->value;
 			indix = i;
 		}
 		i++;
 		stack_b = stack_b->next;
-		
 	}
-	return indix;
+	return (indix);
 }
-void revirse_stack_a(t_stack **stack_a ,t_stack **stack_b)
+
+void	revirse_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
-	int max;
+	int	max;
 
-	while(*stack_b)
+	while (*stack_b)
 	{
 		max = max_value(*stack_b);
 		size = size_node(*stack_b);
-		if(max <= size / 2)
+		if (max <= size / 2)
 		{
-			while(max > 0)
+			while (max > 0)
 			{
 				rb(stack_b);
 				max--;
 			}
 		}
-		else
+		else if (max <= size)
 		{
-			while(max < size)
+			while (max < size)
 			{
 				rrb(stack_b);
 				max++;
 			}
-		}	
-		pa(stack_a ,stack_b);
+		}
+		pa(stack_a, stack_b);
 	}
-
 }
 
 int	small(t_stack *stack_a, int *arr, int index)
@@ -120,41 +77,39 @@ int	small(t_stack *stack_a, int *arr, int index)
 	return (0);
 }
 
-void sort_revirse(t_stack **stack_a ,t_stack**stack_b ,int *arr  ,int size)
+void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 {
-	int start;
-	int end;
-
+	int start, (end);
 	start = 0;
-	end = size / 6;
-
+	end = size /6;
 	if (size > 100)
-		end = size / 16;
-	while(*stack_a)
-	{ 
-		if(small(*stack_a ,arr ,start))
+		end = size / 10;
+	while (*stack_a)
+	{
+		if (small(*stack_a, arr, start))
 		{
-			pb(stack_a ,stack_b);	
+			pb(stack_a, stack_b);
 			rb(stack_b);
-			if (end  < size -1)
-				end++;
-			if (start < end)
-				start++;
+			increment(&start, &end, &size);
 		}
-		else if(small(*stack_a ,arr, end))
-		{
-			pb(stack_a ,stack_b);
-		if (*stack_b && (*stack_b)->next
+		else if (small(*stack_a, arr, end))
+		{ 
+			pb( stack_a, stack_b);
+			if (*stack_b && (*stack_b)->next
 				&& (*stack_b)->value < (*stack_b)->next->value)
 				sb(stack_b);
-			if (end  < size -1)
-				end++;
-			if (start < end)
-				start++;
+			increment(&start, &end, &size);
 		}
 		else
 			ra(stack_a);
-	} 
- 	revirse_stack_a(stack_a ,stack_b);
+	}
+	revirse_stack_a(stack_a, stack_b);
 }
 
+void	increment(int *start, int *end, int *size)
+{
+	if (*end < *size - 1)
+		(*end)++;
+	if (*start < *end)
+		(*start)++;
+}
