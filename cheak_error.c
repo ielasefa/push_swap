@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:21:54 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 01:02:15 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/22 01:28:26 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ int	check_error(char **numbers)
 
 int	check_input(int ac, char **av)
 {
-	char *input,	(**number);	
-	char	*tmp;	
+	char	*input;
+	char	(**number);	
+	char	*tmp;
+
 	int result, (i);
 	input = strdup(av[1]);
 	if (!input)
@@ -91,7 +93,7 @@ int	check_input(int ac, char **av)
 	number = ft_split(input, ' ');
 	free(input);
 	if (!number)
-		return (1);
+		free_input(*number);
 	result = check_error(number);
 	free_split(number);
 	return (result);

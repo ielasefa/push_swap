@@ -41,6 +41,8 @@ void				add_back(t_stack **lst, t_stack *new);
 t_stack				*add_node(int value);
 t_stack				*add_stack(int ac, char **av);
 int					size_node(t_stack *stack);
+t_stack				*process_split_numbers(char **split_numbers,
+						t_stack *stack_a);
 
 void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);

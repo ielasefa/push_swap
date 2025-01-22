@@ -19,38 +19,47 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-t_stack	*add_stack(int ac, char **av)
+t_stack *process_split_numbers(char **split_numbers, t_stack *stack_a)
 {
-	t_stack	*stack_a;
-	t_stack	*new_node;
-	char	**split_numbers;
+    t_stack *new_node;
+    int j;
 
-	int i, j;
-	stack_a = NULL;
-	i = 1;
-	while (i < ac)
-	{
-		split_numbers = ft_split(av[i], ' ');
-		if (!split_numbers)
-			return (NULL);
-		j = 0;
-		while (split_numbers[j])
-		{
-			new_node = add_node(atoi(split_numbers[j]));
-			if (!new_node)
-			{
-				free_split(split_numbers);
-				return (NULL);
-			}
-			add_back(&stack_a, new_node);
-			j++;
-		}
-		free_split(split_numbers);
-		i++;
-	}
-	return (stack_a);
+    j = 0;
+    while (split_numbers[j])
+    {
+        new_node = add_node(atoi(split_numbers[j]));
+        if (!new_node)
+        {
+            free_split(split_numbers);
+            return (NULL);
+        }
+        add_back(&stack_a, new_node);
+        j++;
+    }
+    free_split(split_numbers);
+    return (stack_a);
 }
 
+t_stack *add_stack(int ac, char **av)
+{
+    t_stack *stack_a;
+    char    **split_numbers;
+    int     i;
+
+    stack_a = NULL;
+    i = 1;
+    while (i < ac)
+    {
+        split_numbers = ft_split(av[i], ' ');
+        if (!split_numbers)
+            return (NULL);
+        stack_a = process_split_numbers(split_numbers, stack_a);
+        if (!stack_a)
+            return (NULL);
+        i++;
+    }
+    return (stack_a);
+}
 int	main(int ac, char **av)
 {
 	int		*arr;
