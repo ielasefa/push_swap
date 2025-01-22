@@ -73,7 +73,7 @@ void				sort_2_number(t_stack **stack_a);
 void				sort_3_number(t_stack **stack_a);
 void				sort_4_number(t_stack **stack_a, t_stack **stack_b);
 void				sort_5_number(t_stack **stack_a, t_stack **stack_b);
-void				ft_sort_min(t_stack **stack_a, t_stack **stack_b);
+void				sort_min(t_stack **stack_a, t_stack **stack_b);
 int					free_input(char *input);
 
 void				print_stack(t_stack *stack);

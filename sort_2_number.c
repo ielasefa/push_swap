@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:23:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 16:23:28 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/22 03:55:21 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 }
 
 void	sort_2_number(t_stack **stack_a)
-{
+{ 
 	if ((*stack_a)->value > (*stack_a)->next->value)
 		sa(stack_a);
 }
 
 void	sort_3_number(t_stack **stack_a)
 {
-	if ((*stack_a)->value > (*stack_a)->next->value
-		&& (*stack_a)->value > (*stack_a)->next->next->value)
+	if ((*stack_a)->value > (*stack_a)->next->value	
+			&& (*stack_a)->value > (*stack_a)->next->next->value)
 		ra(stack_a);
 	if ((*stack_a)->next->value > (*stack_a)->next->next->value)
 	{
@@ -48,14 +48,14 @@ void	sort_3_number(t_stack **stack_a)
 
 void	sort_4_number(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_sort_min(stack_a, stack_b);
+	sort_min(stack_a, stack_b);
 	sort_3_number(stack_a);
 	pa(stack_a, stack_b);
 }
 
 void	sort_5_number(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_sort_min(stack_a, stack_b);
+	sort_min(stack_a, stack_b);
 	sort_4_number(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }

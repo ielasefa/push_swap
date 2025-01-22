@@ -34,7 +34,7 @@ int	min_value(t_stack *stack_a)
 	return (indix);
 }
 
-void	ft_sort_min(t_stack **stack_a, t_stack **stack_b)
+void	sort_min(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 	int	min_indix;
