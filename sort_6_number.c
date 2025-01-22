@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:23:52 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/21 17:19:39 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/22 01:20:52 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int	small(t_stack *stack_a, int *arr, int index)
 
 void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 {
-	int start; 
-	int end;
-	
+	int start, (end);
 	start = 0;
 	end = size / 6;
 	if (size > 100)
@@ -66,8 +64,8 @@ void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 			increment(&start, &end, size);
 		}
 		else if (small(*stack_a, arr, end) == 1)
-		{ 
-			pb( stack_a, stack_b);
+		{
+			pb(stack_a, stack_b);
 			if (*stack_b && (*stack_b)->next
 				&& (*stack_b)->value < (*stack_b)->next->value)
 				sb(stack_b);
@@ -75,16 +73,13 @@ void	sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 		}
 		else
 			ra(stack_a);
-			
 	}
 	revirse_stack_a(stack_a, stack_b);
 }
 
 void	revirse_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
-	int	size;
-	int	max_index;
-
+	int size, (max_index);
 	max_index = 0;
 	size = 0;
 	while (*stack_b)
