@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	ft_isdigit(int c)
 {
@@ -60,23 +60,40 @@ t_stack *add_stack(int ac, char **av)
     }
     return (stack_a);
 }
-int	main(int ac, char **av)
-{
-	int		*arr;
-	int		size;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (ac == 1)
-		exit (1);
-	check_input(ac, av);
-	stack_a = add_stack(ac, av);
-	size = size_node(stack_a);
-	arr = array_creat(&stack_a);
-	sort(&stack_a, &stack_b, arr, size);
-	free_stack(stack_a);
-	free(arr);
-	return (0);
+int main(int ac, char **av)
+{
+    int     *arr;
+    int     size;
+    char    *get;
+    int     i;
+    t_stack *stack_a;
+    t_stack *stack_b;
+
+    stack_a = NULL;
+    stack_b = NULL;
+
+    if (ac == 1)
+        exit(1);
+    check_input(ac, av);
+    stack_a = add_stack(ac, av);
+    size = size_node(stack_a);
+    arr = array_creat(&stack_a);
+    i = 1;
+    while (i)
+    {
+        get = get_next_line(0); 
+        if (!get)
+            break;
+        set_ins(&stack_a, &stack_b, get); 
+        free(get); 
+    }
+    if (is_sorted(stack_a) && !stack_b)
+        write(1, "OK\n", 3);
+    else
+        write(1, "KO\n", 3);
+    free_stack(stack_a);
+    free_stack(stack_b); 
+    free(arr);
+    return (0);
 }

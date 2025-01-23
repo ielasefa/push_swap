@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUSH
+# define PUSH_SWAP_BONUSH
 
 # include <ctype.h>
 # include <limits.h>
@@ -25,6 +25,7 @@ typedef struct s_stack
 	int				value;
 	struct s_stack	*next;
 }					t_stack;
+
 // sorted
 int	is_sorted(t_stack *stack_a);
 
@@ -100,5 +101,16 @@ void	free_stack(t_stack *stack);
 
 //print_stack
 void				print_stack(t_stack *stack);
+
+//get_next_line 
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+char	*ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
+
+//comper
+
+void   set_ins(t_stack **stack_a ,t_stack **stack_b ,char *get);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorted.c                                           :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 17:06:25 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 01:09:59 by iel-asef         ###   ########.fr       */
+/*   Created: 2025/01/20 16:22:50 by iel-asef          #+#    #+#             */
+/*   Updated: 2025/01/20 16:22:51 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	is_sorted(t_stack *stack_a)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*node;
+	t_stack	*second;
 
-	node = stack_a;
-	while (node && node->next)
-	{
-		if (node->value > node->next->value)
-			return (0);
-		node = node->next;
-	}
-	return (1);
+	if (!(*stack_b))
+		return ;
+	second = *stack_b;
+	*stack_b = second->next;
+	second->next = *stack_a;
+	*stack_a = second;
+}
+
+void	pb(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*first;
+
+	if (!(*stack_a))
+		return ;
+	first = *stack_a;
+	*stack_a = first->next;
+	first->next = *stack_b;
+	*stack_b = first;
 }
