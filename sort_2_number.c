@@ -27,15 +27,15 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 }
 
 void	sort_2_number(t_stack **stack_a)
-{ 
+{
 	if ((*stack_a)->value > (*stack_a)->next->value)
 		sa(stack_a);
 }
 
 void	sort_3_number(t_stack **stack_a)
 {
-	if ((*stack_a)->value > (*stack_a)->next->value	
-			&& (*stack_a)->value > (*stack_a)->next->next->value)
+	if ((*stack_a)->value > (*stack_a)->next->value
+		&& (*stack_a)->value > (*stack_a)->next->next->value)
 		ra(stack_a);
 	if ((*stack_a)->next->value > (*stack_a)->next->next->value)
 	{

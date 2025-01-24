@@ -17,8 +17,6 @@ int	check_nambre(char **input)
 	int	i;
 	int	j;
 
-	if (!input)
-		return (1);
 	i = 0;
 	while (input[i])
 	{
@@ -73,9 +71,9 @@ int	check_error(char **numbers)
 int	check_input(int ac, char **av)
 {
 	char	*input;
-	char	(**number);	
 	char	*tmp;
 
+	char(**number);
 	int result, (i);
 	input = strdup(av[1]);
 	if (!input)

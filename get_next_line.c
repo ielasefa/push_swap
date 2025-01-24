@@ -14,9 +14,9 @@
 
 char	*ft_read(int fd, char *storage)
 {
-	char		*buffer;
-	ssize_t		read_bytes;
-	char		*temp;
+	char	*buffer;
+	ssize_t	read_bytes;
+	char	*temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -32,7 +32,7 @@ char	*ft_read(int fd, char *storage)
 		if (read_bytes == 0)
 			break ;
 		buffer[read_bytes] = '\0';
-		temp = ft_strjoin(storage, buffer);
+		temp = strjoin(storage, buffer);
 		if (!temp)
 			return (free(buffer), free(storage), (NULL));
 		free(storage);
