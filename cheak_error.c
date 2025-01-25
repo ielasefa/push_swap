@@ -6,13 +6,13 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:21:54 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 01:28:26 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:34:39 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_nambre(char **input)
+int	check_number(char **input)
 {
 	int	i;
 	int	j;
@@ -23,6 +23,8 @@ int	check_nambre(char **input)
 		j = 0;
 		while (input[i][j])
 		{
+			if (input[i][0] == '\0')
+				return (1);
 			if (!ft_isdigit(input[i][j]) && !(j == 0 && (input[i][j] == '-'
 						|| input[i][j] == '+')))
 				return (1);
@@ -33,7 +35,7 @@ int	check_nambre(char **input)
 	return (0);
 }
 
-int	check_dable(char **input)
+int	check_double(char **input)
 {
 	int	i;
 	int	k;
@@ -59,42 +61,14 @@ int	check_error(char **numbers)
 {
 	if (!numbers)
 		exit(1);
-	if (check_nambre(numbers) || check_dable(numbers) || check_max(numbers)
-		|| check_espace(numbers))
+	if (check_number(numbers) || check_double(numbers) || check_max(numbers)
+		|| check_space(numbers))
 	{
 		write(2, "Error\n", 6);
+		free_string(numbers);
 		exit(1);
 	}
 	return (0);
-}
-
-int	check_input(int ac, char **av)
-{
-	char	*input;
-	char	*tmp;
-
-	char(**number);
-	int result, (i);
-	input = strdup(av[1]);
-	if (!input)
-		return (1);
-	i = 2;
-	while (i < ac)
-	{
-		tmp = ft_strjoin(input, av[i]);
-		if (!tmp)
-			free_input(input);
-		free(input);
-		input = tmp;
-		i++;
-	}
-	number = ft_split(input, ' ');
-	free(input);
-	if (!number)
-		free_input(*number);
-	result = check_error(number);
-	free_split(number);
-	return (result);
 }
 
 int	check_max(char **input)
@@ -111,4 +85,24 @@ int	check_max(char **input)
 		i++;
 	}
 	return (0);
+}
+
+int	check_space(char **input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (input[i])
+	{
+		j = 0;
+		while (input[i][j])
+		{
+			if (input[i][j] != ' ')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:22:40 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 01:17:30 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:35:40 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ t_stack	*process_split_numbers(char **split_numbers, t_stack *stack_a)
 		new_node = add_node(atoi(split_numbers[j]));
 		if (!new_node)
 		{
-			free_split(split_numbers);
+			free_string(split_numbers);
 			return (NULL);
 		}
 		add_back(&stack_a, new_node);
 		j++;
 	}
-	free_split(split_numbers);
+	free_string(split_numbers);
 	return (stack_a);
 }
 
@@ -60,19 +60,14 @@ t_stack	*add_stack(int ac, char **av)
 	}
 	return (stack_a);
 }
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {
-	// int     *arr;
-	// int     size;
-	char *get;
-	t_stack *stack_a;
-	t_stack *stack_b;
-
+	char		**get;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
 	stack_a = NULL;
 	stack_b = NULL;
-
 	if (ac == 1)
 		exit(1);
 	check_input(ac, av);
@@ -80,10 +75,11 @@ int	main(int ac, char **av)
 	while (1)
 	{
 		get = get_next_line(0);
-		if (!get)
+		if (!get[0])
 			break ;
-		set_ins(&stack_a, &stack_b, get);
-		// free(get);
+		set_ins(&stack_a, &stack_b, get[0]);
+		free(get[0]);
+		free(get);
 	}
 	if (is_sorted(stack_a) && !stack_b)
 		write(1, "OK\n", 3);
@@ -91,6 +87,8 @@ int	main(int ac, char **av)
 		write(1, "KO\n", 3);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	// free(arr);
+	if(get[1])
+		free(get[1]);
+	free(get);
 	return (0);
 }

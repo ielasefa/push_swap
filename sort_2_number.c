@@ -14,6 +14,8 @@
 
 void	sort(t_stack **stack_a, t_stack **stack_b, int *arr, int size)
 {
+	if (is_sorted(*stack_a))
+		return ;
 	if (size == 2)
 		sort_2_number(stack_a);
 	else if (size == 3)
@@ -34,6 +36,8 @@ void	sort_2_number(t_stack **stack_a)
 
 void	sort_3_number(t_stack **stack_a)
 {
+	if (is_sorted(*stack_a))
+		return ;
 	if ((*stack_a)->value > (*stack_a)->next->value
 		&& (*stack_a)->value > (*stack_a)->next->next->value)
 		ra(stack_a);

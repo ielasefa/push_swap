@@ -26,14 +26,14 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 // sorted
-int	is_sorted(t_stack *stack_a);
+int					is_sorted(t_stack *stack_a);
 
 //
 char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *str);
-int					check_espace(char **input);
+int					check_space(char **input);
 
-//cheak err
+// cheak err
 int					check_number(char **input);
 int					check_error(char **numbers);
 int					check_input(int ac, char **av);
@@ -42,11 +42,12 @@ int					check_max(char **input);
 char				*ft_strjoin(char *s1, char *s2);
 
 // add stack
-t_stack 			*process_split_numbers(char **split_numbers, t_stack *stack_a);
+t_stack				*process_split_numbers(char **split_numbers,
+						t_stack *stack_a);
 int					ft_isdigit(int c);
-t_stack 			*add_stack(int ac, char **av);
+t_stack				*add_stack(int ac, char **av);
 
- // addnode
+// addnode
 t_stack				*last_node(t_stack *stack);
 void				add_back(t_stack **lst, t_stack *new);
 t_stack				*add_node(int value);
@@ -57,7 +58,7 @@ void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);
 void				ss(t_stack **stack_a, t_stack **stack_b);
 
-//rotate reverse 
+// rotate reverse
 void				rra(t_stack **stack_a);
 void				rrb(t_stack **stack_b);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
@@ -66,10 +67,10 @@ void				ra(t_stack **stack_a);
 void				rb(t_stack **stack_b);
 void				rr(t_stack **stack_a, t_stack **stack_b);
 
-//push
+// push
 void				pa(t_stack **stack_a, t_stack **stack_b);
 void				pb(t_stack **stack_a, t_stack **stack_b);
-
+// sort_6
 void				sort_revirse(t_stack **stack_a, t_stack **stack_b, int *arr,
 						int size);
 int					small(t_stack *stack_a, int *arr, int index);
@@ -77,7 +78,7 @@ void				revirse_stack_a(t_stack **stack_a, t_stack **stack_b);
 int					max_value(t_stack *stack_b);
 void				increment(int *start, int *end, int size);
 
-//array sortd
+// array sortd
 int					*array_creat(t_stack **stack_a);
 int					*array_sorted(int *arr, int size);
 
@@ -89,16 +90,21 @@ void				sort_3_number(t_stack **stack_a);
 void				sort_4_number(t_stack **stack_a, t_stack **stack_b);
 void				sort_5_number(t_stack **stack_a, t_stack **stack_b);
 
-//chaek min
+// chaek min
 void				sort_min(t_stack **stack_a, t_stack **stack_b);
 int					min_value(t_stack *stack_a);
 
 // free
-int						free_input(char *input);
-void				free_split(char **split);
-void	free_stack(t_stack *stack);
+int					free_input(char *input);
+void				free_string(char **split);
+void				free_stack(t_stack *stack);
 
-//print_stack
+// join ar
+int					check_input(int ac, char **av);
+char				*join_arguments(int ac, char **av);
+
+void				ft_error(t_stack **stack);
+// print_stack
 void				print_stack(t_stack *stack);
 
 #endif

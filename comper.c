@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/24 02:22:29 by iel-asef          #+#    #+#             */
+/*   Updated: 2025/01/24 02:33:07 by iel-asef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 #include <stdio.h>
 
@@ -10,6 +22,14 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
+void	ft_error(t_stack **stack)
+{
+	free_stack(*stack);
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 void	set_ins(t_stack **stack_a, t_stack **stack_b, char *get)
 {
 	if (!ft_strcmp("sa\n", get))
@@ -35,8 +55,5 @@ void	set_ins(t_stack **stack_a, t_stack **stack_b, char *get)
 	else if (!ft_strcmp("rrr\n", get))
 		rrr(stack_a, stack_b);
 	else
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		return (ft_error(stack_a), free(get));
 }

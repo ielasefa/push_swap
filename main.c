@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:22:40 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 01:17:30 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:31:48 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ t_stack	*process_split_numbers(char **split_numbers, t_stack *stack_a)
 		new_node = add_node(atoi(split_numbers[j]));
 		if (!new_node)
 		{
-			free_split(split_numbers);
+			free_string(split_numbers);
 			return (NULL);
 		}
 		add_back(&stack_a, new_node);
 		j++;
 	}
-	free_split(split_numbers);
+	free_string(split_numbers);
 	return (stack_a);
 }
 
@@ -60,6 +60,7 @@ t_stack	*add_stack(int ac, char **av)
 	}
 	return (stack_a);
 }
+
 int	main(int ac, char **av)
 {
 	int		*arr;

@@ -97,11 +97,12 @@ char	*clean_storage(char *storage)
 	return (cpy);
 }
 
-char	*get_next_line(int fd)
+char	**get_next_line(int fd)
 {
 	static char	*storage;
 	char		*line;
-
+	char  **get;
+	get  = (char **)malloc(sizeof(char *) * 2);
 	storage = ft_read(fd, storage);
 	if (!storage)
 		return (free(storage), storage = NULL, NULL);
@@ -109,5 +110,7 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (free(storage), storage = NULL, NULL);
 	storage = clean_storage(storage);
-	return (line);
+	get[0] = line;
+	get[1] = storage;
+	return (get);
 }

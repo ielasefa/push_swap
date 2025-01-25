@@ -24,7 +24,7 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	free_split(char **split)
+void	free_string(char **split)
 {
 	int	i;
 

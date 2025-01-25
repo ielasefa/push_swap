@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:21:17 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 16:21:25 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:31:18 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,4 @@ int	size_node(t_stack *stack)
 		stack = stack->next;
 	}
 	return (count);
-}
-
-int	check_espace(char **input)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (input[i])
-	{
-		j = 0;
-		while (input[i][j])
-		{
-			if (input[i][j] != ' ')
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
 }

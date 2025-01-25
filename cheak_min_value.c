@@ -41,11 +41,11 @@ void	sort_min(t_stack **stack_a, t_stack **stack_b)
 	int	i;
 
 	i = 1;
-	while (i != 0)
+	while (i > 0)
 	{
-		min_indix = min_value(*stack_a);
 		size = size_node(*stack_a);
-		if (min_indix > size / 2)
+		min_indix = min_value(*stack_a);
+		if (min_indix <= (size / 2))
 		{
 			while (min_indix > 0)
 			{
@@ -55,7 +55,7 @@ void	sort_min(t_stack **stack_a, t_stack **stack_b)
 		}
 		else
 		{
-			while (size > min_indix++)
+			while (min_indix++ < size)
 				rra(stack_a);
 		}
 		pb(stack_a, stack_b);
