@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:24:39 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 17:05:21 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:13:13 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_stack
@@ -30,7 +29,8 @@ int					is_sorted(t_stack *stack_a);
 
 //
 char				**ft_split(char const *s, char c);
-long				ft_atoi(const char *str);
+
+long	ft_atoi(const char *str , int * j );
 int					check_space(char **input);
 
 // cheak err
@@ -39,8 +39,9 @@ int					check_error(char **numbers);
 int					check_input(int ac, char **av);
 int					check_max(char **input);
 
-char				*ft_strjoin(char *s1, char *s2);
-
+char				*beta_strjoin(char *s1, char *s2);
+char				*ft_strdup(const char *s1);
+size_t				ft_strlen(const char *str);
 // add stack
 t_stack				*process_split_numbers(char **split_numbers,
 						t_stack *stack_a);
@@ -104,7 +105,7 @@ int					check_input(int ac, char **av);
 char				*join_arguments(int ac, char **av);
 
 void				ft_error(t_stack **stack);
-// print_stack
-void				print_stack(t_stack *stack);
 
+
+int					beta_strcmp(const char *s1, const char *s2);
 #endif

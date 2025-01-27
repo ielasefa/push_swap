@@ -23,13 +23,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_error(t_stack **stack)
-{
-	free_stack(*stack);
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
 void	set_ins(t_stack **stack_a, t_stack **stack_b, char *get)
 {
 	if (!ft_strcmp("sa\n", get))
@@ -55,5 +48,6 @@ void	set_ins(t_stack **stack_a, t_stack **stack_b, char *get)
 	else if (!ft_strcmp("rrr\n", get))
 		rrr(stack_a, stack_b);
 	else
-		return (ft_error(stack_a), free(get));
+		return ((free(get)) ,ft_error(stack_a));
+
 }

@@ -18,7 +18,7 @@ char	*join_arguments(int ac, char **av)
 	char	*tmp;
 	int		i;
 
-	input = strdup(av[1]);
+	input = ft_strdup(av[1]);
 	if (!input)
 		return (NULL);
 	i = 2;
@@ -30,7 +30,7 @@ char	*join_arguments(int ac, char **av)
 			free(input);
 			exit(1);
 		}
-		tmp = ft_strjoin(input, av[i]);
+		tmp = beta_strjoin(input, av[i]);
 		free(input);
 		if (!tmp)
 			return (NULL);
@@ -40,7 +40,7 @@ char	*join_arguments(int ac, char **av)
 	return (input);
 }
 
-int	 check_input(int ac, char **av)
+int	check_input(int ac, char **av)
 {
 	char	*input;
 	char	**number;

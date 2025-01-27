@@ -32,7 +32,7 @@ char	*ft_read(int fd, char *storage)
 		if (read_bytes == 0)
 			break ;
 		buffer[read_bytes] = '\0';
-		temp = strjoin(storage, buffer);
+		temp = ft_strjoin(storage, buffer);
 		if (!temp)
 			return (free(buffer), free(storage), (NULL));
 		free(storage);
@@ -97,20 +97,19 @@ char	*clean_storage(char *storage)
 	return (cpy);
 }
 
-char	**get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*storage;
 	char		*line;
-	char  **get;
-	get  = (char **)malloc(sizeof(char *) * 2);
+
 	storage = ft_read(fd, storage);
 	if (!storage)
 		return (free(storage), storage = NULL, NULL);
 	line = ft_line(storage);
 	if (!line)
+	{
 		return (free(storage), storage = NULL, NULL);
+	}
 	storage = clean_storage(storage);
-	get[0] = line;
-	get[1] = storage;
-	return (get);
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:22:40 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/24 11:35:40 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/25 21:10:49 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ t_stack	*add_stack(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	char		**get;
-	t_stack		*stack_a;
-	t_stack		*stack_b;
+	char	*get;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ac == 1)
@@ -75,11 +76,13 @@ int	main(int ac, char **av)
 	while (1)
 	{
 		get = get_next_line(0);
-		if (!get[0])
+		if (!get)
+		{
+			
 			break ;
-		set_ins(&stack_a, &stack_b, get[0]);
-		free(get[0]);
-		free(get);
+		}
+		set_ins(&stack_a, &stack_b, get);
+		free(get);  
 	}
 	if (is_sorted(stack_a) && !stack_b)
 		write(1, "OK\n", 3);
@@ -87,8 +90,5 @@ int	main(int ac, char **av)
 		write(1, "KO\n", 3);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	if(get[1])
-		free(get[1]);
-	free(get);
 	return (0);
 }

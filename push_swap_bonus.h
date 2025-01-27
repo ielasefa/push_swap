@@ -16,9 +16,7 @@
 # include <ctype.h>
 # include <limits.h>
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_stack
@@ -100,21 +98,18 @@ int					min_value(t_stack *stack_a);
 int					free_input(char *input);
 void				free_string(char **split);
 void				free_stack(t_stack *stack);
-
-// print_stack
-void				print_stack(t_stack *stack);
-
 // get_next_line
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strchr(const char *s, int c);
-char				*strjoin(char *s1, char *s2);
-char				**get_next_line(int fd);
+char				*beta_strjoin(char *s1, char *s2);
+char				*get_next_line(int fd);
 
 // comper
 void				ft_error(t_stack **stack);
 void				set_ins(t_stack **stack_a, t_stack **stack_b, char *get);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
+
+int	ft_strcmp(const char *s1, const char *s2);
 
 // join ar
 int					check_input(int ac, char **av);

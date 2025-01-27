@@ -6,90 +6,37 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:24:05 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:49 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:51:05 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	count(char const *s, char c)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
-	int	count;
-	int	next;
+	size_t	len;
 
-	i = 0;
-	count = 0;
-	next = 1;
-	while (s[i])
-	{
-		if (s[i] != c && next == 1)
-		{
-			next = 0;
-			count++;
-		}
-		else if (s[i] == c)
-			next = 1;
-		i++;
-	}
-	return (count);
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
 
-static char	*copy(char *str, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	word = malloc((end - start + 2) * sizeof(char));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (start < end)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**result;
-
-	int i, (start), (j), (word);
-	if (!s)
-		return (NULL);
-	word = count(s, c);
-	result = malloc((word + 1) * sizeof(char *));
-	if (!result)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		start = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (start < i)
-			result[j++] = copy((char *)s, start, i);
-	}
-	result[j] = NULL;
-	return (result);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
+char	*beta_strjoin(char *s1, char *s2)
 {
 	char	*dst;
 	int		i;
 	int		j;
 
 	if (!s1)
-		return (strdup(s2));
+		return (ft_strdup(s2));
 	if (!s2)
-		return (strdup(s1));
+		return (ft_strdup(s1));
 	if (!s1 && !s2)
 		return (NULL);
-	dst = malloc(strlen(s1) + strlen(s2) + 2);
+	dst = malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
 	if (!dst)
 		return (NULL);
 	i = 0;
@@ -106,7 +53,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (dst);
 }
 
-long	ft_atoi(const char *str)
+long	ft_atoi(const char *str , int * j )
 {
 	long	r;
 
@@ -114,9 +61,6 @@ long	ft_atoi(const char *str)
 	i = 0;
 	s = 1;
 	r = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -126,7 +70,35 @@ long	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + (str[i] - '0');
-		i++;
+		if ((r * s) > 2147483647 || (r * s) < -2147483648)
+			{
+				if(j != NULL)
+					*j = 1;
+				return 0;
+			}
+			i++;
 	}
 	return (r * s);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	len_s;
+	char	*s;
+	int		i;
+
+	if (!s1)
+		return (NULL);
+	len_s = ft_strlen(s1);
+	s = malloc(len_s + 1);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
 }

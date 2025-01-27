@@ -6,7 +6,7 @@
 /*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 00:54:30 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/01/22 00:54:58 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/01/25 21:08:41 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ int	free_input(char *input)
 {
 	free(input);
 	return (1);
+}
+
+void	ft_error(t_stack **stack)
+{
+	free_stack(*stack);
+	write(2, "Error\n", 6);
+	exit(1);
 }
