@@ -25,3 +25,23 @@ int	is_sorted(t_stack *stack_a)
 	}
 	return (1);
 }
+
+int	check_space(char **input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (input[i])
+	{
+		j = 0;
+		while (input[i][j])
+		{
+			if (input[i][j] != ' ')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}

@@ -30,7 +30,7 @@ int					is_sorted(t_stack *stack_a);
 //
 char				**ft_split(char const *s, char c);
 
-long	ft_atoi(const char *str , int * j );
+long				ft_atoi(const char *str, int *j);
 int					check_space(char **input);
 
 // cheak err
@@ -39,6 +39,7 @@ int					check_error(char **numbers);
 int					check_input(int ac, char **av);
 int					check_max(char **input);
 
+int					cheak_atoi(long r, int s, int *j);
 char				*beta_strjoin(char *s1, char *s2);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlen(const char *str);
@@ -106,6 +107,7 @@ char				*join_arguments(int ac, char **av);
 
 void				ft_error(t_stack **stack);
 
+void				print_stack(t_stack *top);
 
 int					beta_strcmp(const char *s1, const char *s2);
 #endif

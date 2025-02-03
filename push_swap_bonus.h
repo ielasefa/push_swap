@@ -109,7 +109,7 @@ char				*get_next_line(int fd);
 void				ft_error(t_stack **stack);
 void				set_ins(t_stack **stack_a, t_stack **stack_b, char *get);
 
-int	ft_strcmp(const char *s1, const char *s2);
+int					ft_strcmp(const char *s1, const char *s2);
 
 // join ar
 int					check_input(int ac, char **av);

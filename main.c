@@ -27,7 +27,7 @@ t_stack	*process_split_numbers(char **split_numbers, t_stack *stack_a)
 	j = 0;
 	while (split_numbers[j])
 	{
-		new_node = add_node(ft_atoi(split_numbers[j] , NULL));
+		new_node = add_node(ft_atoi(split_numbers[j], NULL));
 		if (!new_node)
 		{
 			free_string(split_numbers);

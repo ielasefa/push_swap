@@ -53,11 +53,23 @@ char	*beta_strjoin(char *s1, char *s2)
 	return (dst);
 }
 
-long	ft_atoi(const char *str , int * j )
+int	cheak_atoi(long r, int s, int *j)
+{
+	if ((r * s) > 2147483647 || (r * s) < -2147483648)
+	{
+		if (j != NULL)
+			*j = 1;
+		return (0);
+	}
+	return (1);
+}
+
+long	ft_atoi(const char *str, int *j)
 {
 	long	r;
+	int		i;
+	int		s;
 
-	int i, (s);
 	i = 0;
 	s = 1;
 	r = 0;
@@ -67,16 +79,14 @@ long	ft_atoi(const char *str , int * j )
 			s = -1;
 		i++;
 	}
+	if (ft_isdigit(str[i]) == 0)
+		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + (str[i] - '0');
-		if ((r * s) > 2147483647 || (r * s) < -2147483648)
-			{
-				if(j != NULL)
-					*j = 1;
-				return 0;
-			}
-			i++;
+		if (cheak_atoi(r, s, j) == 0)
+			return (0);
+		i++;
 	}
 	return (r * s);
 }

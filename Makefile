@@ -4,7 +4,7 @@ BNAME = checker
 SRC = addnode.c cheak_min_value.c push.c rotate.c sort_6_number.c \
     utul_push_swap.c cheak_error.c main.c reverse_rotate.c  sorted.c \
 	sort_2_number.c swap.c array_sorted.c free.c join_arg.c \
-	split.c
+	split.c 
 
 BSRC = addnode.c	comper.c	main_bonus.c	swap_bonus.c  array_sorted.c \
     free.c    reverse_rotate_bonus.c	sort_2_number.c	cheak_error.c \

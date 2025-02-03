@@ -25,7 +25,7 @@ int	check_number(char **input)
 		{
 			if (!ft_isdigit(input[i][j]) && !(j == 0 && (input[i][j] == '-'
 						|| input[i][j] == '+')))
-						return (1);
+				return (1);
 			j++;
 		}
 		i++;
@@ -56,9 +56,8 @@ int	check_double(char **input)
 		k = i + 1;
 		while (input[k])
 		{
-			if (beta_strcmp (input[i] , input[k]) == 0 )
+			if ((ft_atoi(input[i], NULL)) == (ft_atoi(input[k], NULL)))
 				return (1);
-
 			k++;
 		}
 		i++;
@@ -84,37 +83,20 @@ int	check_max(char **input)
 {
 	int		i;
 	long	num;
-	int j;
-	 j = 0;
+	int		j;
+
+	j = 0;
 	i = 0;
 	while (input[i])
 	{
-		num = ft_atoi(input[i] ,&j);
-		if(j)
-			return 1;
+		num = ft_atoi(input[i], &j);
+		if (num == -1 && beta_strcmp(input[i], "-1"))
+			return (1);
+		if (j)
+			return (1);
 		if (num > INT_MAX || num < INT_MIN)
 			return (1);
 		i++;
 	}
 	return (0);
-}
-
-int	check_space(char **input)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (input[i])
-	{
-		j = 0;
-		while (input[i][j])
-		{
-			if (input[i][j] != ' ' )
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
 }

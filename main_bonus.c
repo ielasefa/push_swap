@@ -77,12 +77,9 @@ int	main(int ac, char **av)
 	{
 		get = get_next_line(0);
 		if (!get)
-		{
-			
 			break ;
-		}
 		set_ins(&stack_a, &stack_b, get);
-		free(get);  
+		free(get);
 	}
 	if (is_sorted(stack_a) && !stack_b)
 		write(1, "OK\n", 3);

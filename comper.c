@@ -48,6 +48,5 @@ void	set_ins(t_stack **stack_a, t_stack **stack_b, char *get)
 	else if (!ft_strcmp("rrr\n", get))
 		rrr(stack_a, stack_b);
 	else
-		return ((free(get)) ,ft_error(stack_a));
-
+		return ((free(get)), free_stack(*stack_b), ft_error(stack_a));
 }
