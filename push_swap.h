@@ -32,7 +32,7 @@ char				**ft_split(char const *s, char c);
 
 long				ft_atoi(const char *str, int *j);
 int					check_space(char **input);
-
+int					check_space1(char *input);
 // cheak err
 int					check_number(char **input);
 int					check_error(char **numbers);

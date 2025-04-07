@@ -24,7 +24,7 @@ char	*join_arguments(int ac, char **av)
 	i = 2;
 	while (i < ac)
 	{
-		if (av[i][0] == '\0' || check_space(&av[i]))
+		if (av[i][0] == '\0' || check_space(&av[i]) || check_space1(av[i]))
 		{
 			write(2, "Error\n", 6);
 			free(input);
@@ -38,6 +38,20 @@ char	*join_arguments(int ac, char **av)
 		i++;
 	}
 	return (input);
+}
+
+int	check_space1(char *input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i])
+	{
+		if (input[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	check_input(int ac, char **av)
